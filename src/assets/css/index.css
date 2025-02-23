@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card-slide-content {
+  @apply bg-light1 rounded-3xl absolute top-1/2 z-10 p-5 max-w-[305px] transition-all opacity-0;
+  left: 100px;
+  transition-duration: 1000ms;
+
+  transform: translateY(-45%) rotate3d(1, 0, 0, -20deg);
+}
+
+.swiper-slide-active .card-slide-content {
+  @apply opacity-100;
+  transform: translateY(-50%) rotate3d(1, 1, 1, 0deg);
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  height: 30px;
+}
