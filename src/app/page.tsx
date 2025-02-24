@@ -3,13 +3,14 @@ import WeddingPackagesWrapper from "@/components/WeddingPackages";
 import ThumbsUp from "@/assets/images/thumbsup.svg";
 import CreditCard from "@/assets/images/credit-card.svg";
 import Town from "@/assets/images/town.svg";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main className=" flex flex-col gap-y-16">
       <Header />
       <section>
-        <WeddingPackagesWrapper show="newest" type="slider" />
+        <WeddingPackagesWrapper show="popular" type="slider" />
       </section>
 
       <section className="container mx-auto flex flex-col">
@@ -61,6 +62,22 @@ export default function Home() {
             </a>
           </div>
         </div>
+      </section>
+
+      <section className="container mx-auto flex flex-col">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold max-w-sm">
+            Our Latest & Best Wedding Packages
+          </h2>
+          <Link
+            href="/packages"
+            className="border border-dark1 px-5 py-3 text-center rounded-full font-semibold"
+          >
+            Explore All
+          </Link>
+        </div>
+
+        <WeddingPackagesWrapper show="newest" type="grid" />
       </section>
     </main>
   );
