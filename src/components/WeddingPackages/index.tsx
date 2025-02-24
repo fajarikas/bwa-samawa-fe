@@ -15,14 +15,14 @@ type PropsWeddingPackagesWrapper = {
   type: "grid" | "slider";
 };
 
-function WeddingPackageGrid({ data }: { data: TPackage[] }) {
+export function WeddingPackageGrid({ data }: { data: TPackage[] }) {
   return (
     <div className="grid grid-cols-4 gap-7">
       {data.map((weddingPackage) => {
         return (
           <div className="flex flex-col gap-y-4 relative">
             <Link
-              href={`${process.env.HOST_APP}/packages/${weddingPackage.slug}`}
+              href={`/packages/${weddingPackage.slug}`}
               className="absolute inset-0 z-10"
             >
               {/* Link here */}
@@ -52,7 +52,7 @@ function WeddingPackageGrid({ data }: { data: TPackage[] }) {
               </span>
               <span className="flex gap-x-2 items-center text-color1">
                 <HomeTown />
-                Tentram
+                {weddingPackage.weddingOrganizer?.name}
               </span>
             </span>
             <span className="text-color2 font-bold">
@@ -65,7 +65,7 @@ function WeddingPackageGrid({ data }: { data: TPackage[] }) {
   );
 }
 
-function WeddingPackageSlider({ data }: { data: TPackage[] }) {
+export function WeddingPackageSlider({ data }: { data: TPackage[] }) {
   return (
     <div className="relative">
       <Slider
@@ -73,6 +73,7 @@ function WeddingPackageSlider({ data }: { data: TPackage[] }) {
         swiperSliderClassName="-mx-10 px-12 xl:max-w-5xl 2xl:max-w-7xl"
       >
         {data.map((slide) => {
+          // console.log("🚀 ~ {data.map ~ slide:", slide);
           return (
             <div
               key={slide.id}
@@ -105,11 +106,11 @@ function WeddingPackageSlider({ data }: { data: TPackage[] }) {
                   </span>
                   <span className="flex gap-x-2 items-center">
                     <HomeTown />
-                    {slide.weddingOrganizer.name}
+                    {slide.weddingOrganizer?.name}
                   </span>
                 </span>
                 <Link
-                  href={`${process.env.HOST_APP}/packages/${slide.slug}`}
+                  href={`/packages/${slide.slug}`}
                   className="flex justify-center bg-color2 py-2 w-full text-light1 rounded-full"
                 >
                   View Package
@@ -128,6 +129,7 @@ async function WeddingPackagesWrapper({
   type,
 }: PropsWeddingPackagesWrapper) {
   const { data }: { data: TPackage[] } = await getData(show);
+  console.log("🚀 ~ data:", data);
 
   if (type === "grid") {
     return <WeddingPackageGrid data={data} />;

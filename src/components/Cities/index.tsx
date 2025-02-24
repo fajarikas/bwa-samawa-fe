@@ -32,7 +32,7 @@ function Content({ data }: { data: TCity[] }) {
               </span>
             </span>
             <Link
-              href={`${process.env.HOST_APP}/cities/${city.slug}`}
+              href={`/cities/${city.slug}`}
               className="absolute inset-0"
             ></Link>
           </div>
