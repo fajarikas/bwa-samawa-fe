@@ -12,7 +12,10 @@ function Content({ data }: { data: TCity[] }) {
     <div className="grid grid-cols-3 gap-7">
       {data.map((city) => {
         return (
-          <div className="flex border border-transparent hover:border-color2 transition-colors duration-300 bg-light1 p-5 rounded-3xl items-center gap-x-5 relative">
+          <div
+            key={city.id}
+            className="flex border border-transparent hover:border-color2 transition-colors duration-300 bg-light1 p-5 rounded-3xl items-center gap-x-5 relative"
+          >
             <span className="relative w-[80px] aspect-square rounded-3xl overflow-hidden">
               <Image
                 fill
