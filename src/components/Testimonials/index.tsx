@@ -6,7 +6,7 @@ import Star from "@/assets/images/star.svg";
 import Image from "next/image";
 import { getData } from "./actions";
 
-function Content({ data }: { data: TTestimonial }) {
+export function Content({ data }: { data: TTestimonial }) {
   return (
     <div className="relative">
       <div className="flex flex-col border p-7 rounded-3xl gap-y-4">

@@ -59,7 +59,7 @@ async function DetailsCitySlug({ params }: Request) {
   return (
     <main className=" flex flex-col gap-y-16">
       <Header />
-      <section className="flex flex-col">
+      <section className="flex flex-col -mt-8">
         <div className="container mx-auto flex justify-between items-center mb-8">
           <span className="flex max-w-sm">
             <h2 className="text-4xl font-bold">
@@ -98,7 +98,7 @@ async function DetailsCitySlug({ params }: Request) {
         <WeddingPackageGrid data={city.weddingPackages} />
       </section>
 
-      <section className="flex flex-col">
+      <section className="flex flex-col ">
         <div className="container mx-auto flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold max-w-xs">
             Happy Stories of Our Wedding
