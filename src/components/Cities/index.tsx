@@ -44,7 +44,6 @@ function Content({ data }: { data: TCity[] }) {
 
 async function Cities({}: Props) {
   const { data }: { data: TCity[] } = await getData();
-  console.log("🚀 ~ Cities ~ data:", data);
 
   if (data.length === 0) {
     return "No Data";

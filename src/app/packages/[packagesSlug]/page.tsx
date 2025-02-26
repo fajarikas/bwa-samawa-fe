@@ -62,7 +62,6 @@ async function PackageDetailsPage({ params }: Request) {
   const { data: details }: { data: TPackage } = await getData(
     params.packagesSlug
   );
-  console.log("🚀 ~ PackageDetailsPage ~ details:", details);
 
   return (
     <main className="flex flex-col gap-y-8 relative pb-16">
@@ -111,7 +110,11 @@ async function PackageDetailsPage({ params }: Request) {
               <h6 className="font-bold text-xl">Bonus Included</h6>
               {details.weddingBonusPackages?.map((bonus) => {
                 return (
-                  <ContentBonus key={bonus.id} data={bonus.bonusPackage} />
+                  <ContentBonus
+                    slugPackage={details.slug}
+                    key={bonus.id}
+                    data={bonus.bonusPackage}
+                  />
                 );
               })}
             </div>

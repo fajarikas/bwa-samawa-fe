@@ -54,7 +54,6 @@ export async function generateMetadata(
 
 async function DetailsCitySlug({ params }: Request) {
   const { data: city }: { data: TCity } = await getData(params.citySlug);
-  console.log("🚀 ~ DetailsCitySlug ~ city:", city);
 
   return (
     <main className=" flex flex-col gap-y-16">

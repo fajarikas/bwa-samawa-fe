@@ -73,7 +73,6 @@ export function WeddingPackageSlider({ data }: { data: TPackage[] }) {
         swiperSliderClassName="-mx-10 px-12 xl:max-w-5xl 2xl:max-w-7xl"
       >
         {data.map((slide) => {
-          // console.log("🚀 ~ {data.map ~ slide:", slide);
           return (
             <div
               key={slide.id}
@@ -129,7 +128,6 @@ async function WeddingPackagesWrapper({
   type,
 }: PropsWeddingPackagesWrapper) {
   const { data }: { data: TPackage[] } = await getData(show);
-  console.log("🚀 ~ data:", data);
 
   if (type === "grid") {
     return <WeddingPackageGrid data={data} />;
