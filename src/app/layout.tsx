@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "@/assets/css/index.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Samawa",
@@ -27,10 +29,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning>
         {children}
-
         {modal}
+        <ToastContainer />
       </body>
     </html>
   );

@@ -5,11 +5,12 @@ import { usePathname } from "next/navigation";
 import Logo from "@/assets/images/logo-samawa.svg";
 import Link from "next/link";
 
-type Props = {};
+type Props = {
+  hasPadding?: boolean;
+};
 
-function Header({}: Props) {
+function Header({ hasPadding }: Props) {
   const pathName = usePathname();
-  // console.log("🚀 ~ Header ~ pathName:", pathName);
   const mainMenus = [
     {
       key: "homePage",
@@ -33,7 +34,12 @@ function Header({}: Props) {
     },
   ];
   return (
-    <header className="flex justify-between container mx-auto items-center pt-8 ">
+    <header
+      className={[
+        "flex justify-between container mx-auto items-center ",
+        hasPadding ? "p-5 bg-white rounded-2xl" : "pt-8 ",
+      ].join("")}
+    >
       <span className="flex gap-x-3 items-center">
         <span className="text-color2">
           <Logo />

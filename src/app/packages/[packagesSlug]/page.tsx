@@ -11,28 +11,14 @@ import Checkmark from "@/assets/images/check-mark.svg";
 import thousands from "@/libs/thousands";
 import Link from "next/link";
 import Slides from "./Slides";
+import { Content as ContentOrganizer } from "@/components/Organizer";
+import { getData } from "./action";
 
 type Request = {
   params: {
     packagesSlug: string;
   };
 };
-
-async function getData(slug: string) {
-  try {
-    const req = await fetch(
-      `${process.env.HOST_API}/api/wedding-package/${slug}`,
-      {
-        method: "GET",
-        cache: "no-cache",
-      }
-    );
-
-    return req.json();
-  } catch (error) {
-    console.log("🚀 ~ getData ~ error:", error);
-  }
-}
 
 export async function generateMetadata(
   { params }: Request,
@@ -169,27 +155,14 @@ async function PackageDetailsPage({ params }: Request) {
                 </ul>
                 <hr />
                 <h6 className="font-bold">Wedding Organizer</h6>
-                {/* <div className="flex border border-light3 hover:border-color2 transition-colors duration-300 bg-light1 p-5 rounded-3xl items-center gap-x-5 relative">
-                  <span className="relative w-[80px] aspect-square rounded-full overflow-hidden">
-                    <img
-                      src="/images/image 5.png"
-                      alt="wedding 2"
-                      className="w-full h-full object-cover absolute"
-                    />
-                  </span>
-                  <span className="flex flex-col">
-                    <span className="text-xl font-bold">Dian Putri</span>
-                    <span className="">194 Packages</span>
-                  </span>
-                  <a href="/organizers.html" className="absolute inset-0"></a>
-                </div> */}
+                <ContentOrganizer data={details.weddingOrganizer} />
                 <hr />
-                <a
-                  href="/checkout.html"
+                <Link
+                  href={`/packages/${details.slug}/checkout`}
                   className="flex justify-center bg-color2 py-4 w-full text-light1 rounded-full"
                 >
                   Choose This Package
-                </a>
+                </Link>
               </div>
             </div>
           </div>
