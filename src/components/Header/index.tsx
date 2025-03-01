@@ -36,7 +36,7 @@ function Header({ hasPadding }: Props) {
   return (
     <header
       className={[
-        "flex justify-between container mx-auto items-center ",
+        "flex justify-between container z-20 mx-auto items-center ",
         hasPadding ? "p-5 bg-white rounded-2xl" : "pt-8 ",
       ].join("")}
     >

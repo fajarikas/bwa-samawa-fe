@@ -2,6 +2,7 @@ import React from "react";
 import { TOrganizer } from "./types";
 import Image from "next/image";
 import thousands from "@/libs/thousands";
+import Link from "next/link";
 
 type Props = {
   data: TOrganizer;
@@ -26,7 +27,7 @@ export function Content({ data }: Props) {
           }`}
         </span>
       </span>
-      <link href={`/organizers`} className="absolute inset-0"></link>
+      <Link href={`/organizers`} className="absolute inset-0"></Link>
     </div>
   );
 }

@@ -50,27 +50,32 @@ export async function booking(prevState: any, formData: FormData) {
 
   console.log("proof", formData.get("proof"));
 
-  const res = await fetch(`${process.env.HOST_API}/api/booking-transaction`, {
-    method: "POST",
-    body: formData,
-  });
+  // const res = await fetch(`${process.env.HOST_API}/api/booking-transaction`, {
+  //   method: "POST",
+  //   body: formData,
+  // });
 
-  //   console.log("🚀 ~ booking ~ res:", res);
+  // const data = await res.json();
 
-  //   const data = await res.json();
-  //   console.log("🚀 ~ booking ~ data:", data);
-
-  //   return redirect(`/packages/${formData.get("slug")}/checkout/success`);
+  // return redirect(
+  //   `/packages/${formData.get("slug")}/checkout/success?bookingId=${
+  //     data.data.booking_trx_id
+  //   }`
+  // );
   try {
-    await fetch(`${process.env.HOST_API}/api/booking-transaction`, {
+    const res = await fetch(`${process.env.HOST_API}/api/booking-transaction`, {
       method: "POST",
       body: formData,
     });
 
-    // Kembalikan URL tujuan, JANGAN langsung redirect di sini
+    const data = await res.json();
+    console.log("🚀 ~ booking ~ res:", data);
+
     return {
       status: 200,
-      redirectUrl: `/packages/${formData.get("slug")}/checkout/success`,
+      redirectUrl: `/packages/${formData.get(
+        "slug"
+      )}/checkout/success?bookingId=${data.data.booking_trx_id}`,
     };
   } catch (error) {
     console.error("Fetch error:", error);
